@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="col-8">
+<!-- general form elements -->
+ <div class="card card-primary">
+  <div class="card-header">
+    <h3 class="card-title">Modifier Projet</h3>
+  </div>
+  <!-- /.card-header -->
+  <!-- form start -->
+  <form >
+    <div class="card-body">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Titre</label>
+        <input type="text" class="form-control" name="title" [(ngModel)]= "currentProject.title" placeholder="Enter email">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Budget</label>
+        <input type="text" class="form-control" name="budget" [(ngModel)]= "currentProject.budget" placeholder="Enter email">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Date de début</label>
+        <input type="date" class="form-control" name="Start_Date" [(ngModel)]= "currentProject.Start_Date" placeholder="Enter email">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Date de Fin</label>
+        <input type="date" class="form-control" name="End_Date" [(ngModel)]= "currentProject.End_Date" placeholder="Enter email">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Description</label>
+        <input type="email" class="form-control" name="description" [(ngModel)]= "currentProject.description" placeholder="Enter email">
+      </div>
+      <!--
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      </div>
+      -->
+      <div class="form-group">
+        <label for="exampleInputFile">File input</label>
+        <div class="input-group">
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" name="file" [(ngModel)]= "currentProject.file">
+            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+          </div>
+          <div class="input-group-append">
+            <span class="input-group-text">Upload</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- /.card-body -->
+
+    <div class="card-footer">
+      <button type="submit" class="btn btn-primary" (click)=" updateProject()">Modifier</button>
+    </div>
+  </form>
+</div>
+</div>
+</div>
+
+

@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <button type="submit" class="card-title" class="btn btn-success" routerLink = "/add"> +Add User</button>
+        <div class="card-tools">
+          <div class="input-group input-group-sm" style="width: 150px;">
+            <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+            <div class="input-group-append">
+              <button type="submit" class="btn btn-default">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body table-responsive p-0" style="height: 300px;">
+        <table class="table table-head-fixed text-nowrap">
+          <thead>
+            <tr>
+              <th>Nom</th>
+              <th>Prénom</th>
+              <th>Poste</th>
+              <th>Expérience</th>
+              <th>Type de contrat</th>
+              <th>date d'entrée</th>
+              <th>Stack principale</th>
+              <th>Stack secondaire</th>
+              <th>Email</th>
+              <th>Password</th>
+              <th>Role</th>
+            </tr>
+          </thead>
+
+          <tbody   *ngFor ="let user of users">
+             <tr>
+                <td>{{user.nom}}</td>
+                <td>{{user.prenom}}</td>
+                <td>{{user.poste}}</td>
+                <td>{{user.experience}}</td>
+                <td>{{user.type_contrat}}</td>
+                <td>{{user.date_entree}}</td>
+                <td>{{user.stack_principale}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.password}}</td>
+                <td>{{user.role}}</td>
+             <td><button (click)=" delete(user._id)" class="btn btn-danger" type="submit">Supprimer</button></td>
+             <td><button type="button" class="btn btn-primary" [routerLink]="['/update',user._id]" >Editer</button></td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+      <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+  </div>
+</div>
