@@ -37,21 +37,24 @@ return this.http.delete(`${this.apiURL}/${id}`);
 
       }
 
-  consulterUser(id: number): Observable<User> {
+  /*consulterUser(id: number): Observable<User> {
         const url = `${this.apiURL}/${id}`;
         return this.http.get<User>(url);
-        }
+        }*/
 
 
- /* updateUser(user :User) : Observable<any>
+ /*updateUser(user: any,id:any) : Observable<any>
 {
-      return this.http.patch(this.apiURL,user, HttpOptions);
+      return this.http.patch(this.apiURL+id,user, HttpOptions);
 }*/
 updateUser(id, data): Observable<any> {
   return this.http.patch(`${this.apiURL}/${id}`, data);
 }
 login(user:User){
   return this.http.post(`${this.apiURL}/login`,user)
+}
+register(user:User){
+  return this.http.post(`${this.apiURL}/register`,user)
 }
 isLoggedIn(){
 
@@ -63,5 +66,6 @@ isLoggedIn(){
     return false;
   }
 }
-
 }
+
+

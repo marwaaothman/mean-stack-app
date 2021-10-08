@@ -16,6 +16,11 @@ import { AddUserComponent } from './users/add-user/add-user.component';
 import { UpdateUserComponent } from './users/update-user/update-user.component';
 import { ToastrModule, ToastNoAnimation, ToastNoAnimationModule } from 'ngx-toastr';
 import { RegisterComponent } from './register/register.component';
+import { AffectationComponent } from './affectation/affectation.component';
+import { HomeComponent } from './home/home.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +31,11 @@ import { RegisterComponent } from './register/register.component';
     AddUserComponent,
     UpdateUserComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    AffectationComponent,
+    HomeComponent,
+    NavbarComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

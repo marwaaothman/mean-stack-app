@@ -1,5 +1,5 @@
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from './../services/user.service';
 import { User } from './../models/user';
 import { Component, OnInit } from '@angular/core';
@@ -28,9 +28,9 @@ export class LoginComponent implements OnInit {
       ]),
       password: new FormControl('',[
         Validators.required,
-        /*Validators.minLength(6)*/
       ])
     }
+
     this.loginForm = this.fb.group(formControls)
   }
 
@@ -40,31 +40,28 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
 
-    /*let isLoggedIn = this.userService.isLoggedIn();
+    let isLoggedIn = this.userService.isLoggedIn();
 
     if (isLoggedIn) {
       this.router.navigate(['/users']);
-    }*/
+    }
   }
-
   login() {
     let data = this.loginForm.value;
 
-    let user = new User();
-
-    this.userService.login(user).subscribe(
+    this.userService.login(data).subscribe(
       res=>{
+      let token = res['token'];
         console.log(res);
-        /*let token = res.token;
-        localStorage.setItem("myToken",token );
-        */
+        localStorage.setItem("myToken",token);
         this.router.navigate(['/users']);
       },
       err=>{
         console.log(err);
-
       }
+
     )
 
   }
+
 }

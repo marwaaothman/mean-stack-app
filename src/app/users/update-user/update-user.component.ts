@@ -18,8 +18,8 @@ export class UpdateUserComponent implements OnInit {
                 private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    this.userService.consulterUser(this.activatedRoute.snapshot.params.id).
-    subscribe( data=>{ this.currentUser = data; });
+    /*this.userService.consulterUser(this.activatedRoute.snapshot.params.id).
+    subscribe( data=>{ this.currentUser = data; });*/
   }
 
  /* ModifierUser() {

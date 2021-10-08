@@ -1,7 +1,8 @@
 import { Project } from './../models/project';
 import { ProjectService } from './../services/project.service';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-projects',
@@ -10,7 +11,13 @@ import { Router } from '@angular/router';
 })
 export class ProjectsComponent implements OnInit {
   projects: Project[];
-  constructor(private projectService : ProjectService , private route:Router) { }
+  projet =new  Project();
+  currentProject = new Project();
+  message='';
+
+  constructor(private projectService : ProjectService , private route:Router,
+    private activatedRoute: ActivatedRoute,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.projectService.listeProjets().subscribe(
@@ -19,11 +26,53 @@ export class ProjectsComponent implements OnInit {
         this.projects=data;
       }
     );
+    this.projectService.consulterProjet(this.activatedRoute.snapshot.params.id).
+    subscribe( data=>{ this.currentProject = data; });
   }
   delete(id:number){
     this.projectService.delete(id).subscribe(
-      data=> { this.ngOnInit()  },
+      data=> {
+        this.toastr.error('User supprimé!!');
+        this.ngOnInit()  },
       err => {  }
     )
   }
+  addProject(){
+    this.projectService.ajoutProduit(this.projet).subscribe(
+      /* data => {
+    console.log(data);
+    });
+    this.router.navigate(['users']).then(() => {
+      window.location.reload();
+      }); */
+      data=>{
+        this.toastr.success('added successfuly!!');
+        let ref =document.getElementById('cancel')
+        ref?.click();
+        this.ngOnInit()
+
+      },
+      err=>{}
+    )
+    };
+
+    updateProject(): void {
+
+      this.projectService.updateProject(this.currentProject._id, this.currentProject)
+        .subscribe(
+          response => {
+            console.log(response);
+            this.message = 'The tutorial was updated successfully!';
+            this.route.navigate(['projects']);
+          },
+          error => {
+            console.log(error);
+          });
+    }
+consulter(): void {
+    this.projectService.consulterProjet(this.activatedRoute.snapshot.params.id).
+    subscribe( data=>{ this.currentProject = data; });
 }
+}
+
+

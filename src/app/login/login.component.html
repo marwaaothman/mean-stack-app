@@ -4,6 +4,7 @@
   <div class="card-header">
     <h3 class="card-title">Login</h3>
   </div>
+
   <form class="form-horizontal" [formGroup]="loginForm" (ngSubmit)="login()">
     <div class="card-body">
       <div class="form-group row">
@@ -32,6 +33,7 @@
 </div>
 </div>
 -->
+<!--
 <div class="container my-5">
   <form [formGroup]="loginForm" (ngSubmit)="login()">
       <div class="form-group">
@@ -47,9 +49,65 @@
           <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password">
           <div *ngIf="password.touched && password.invalid">
               <small *ngIf="password.errors.required" class="text-danger">Password is required<br></small>
-              <small *ngIf="password.errors.minlength" class="text-danger">password must contain 6 characters at least</small>
+
           </div>
       </div>
-      <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
+      <button type="submit" class="btn btn-primary" >Login</button>
   </form>
 </div>
+-->
+<!--[disabled]="loginForm.invalid"-->
+
+<div class="bg-light min-vh-100 d-flex flex-row align-items-center">
+  <div class="container">
+    <div class="row justify-content-center">
+          <div class="col-md-6">
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <div class="card-group d-block d-md-flex row">
+              <div class="card col-md-8 p-3 mb-0">
+                <div class="card-body">
+                  
+                  <h1>Login</h1>
+                  <p class="text-medium-emphasis">Sign In to your account</p>
+
+                  <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="fas fa-at"></i>
+                     <!-- <svg class="icon">
+                        <use xlink:href="assets/login/node_modules/@coreui/icons/sprites/free.svg#cil-user"></use>
+                      </svg>
+                       -->
+                    </span>
+                    <input class="form-control" formControlName="email" type="text" placeholder="Email"></div>
+                <div *ngIf="email.touched && email.invalid">
+                  <small *ngIf="email.errors.required" class="text-danger">Email is required<br></small>
+                  <small *ngIf="email.errors.email" class="text-danger">Invalid Email<br></small>
+              </div>
+                  </div>
+
+                  <div class="input-group mb-4">
+                    <span class="input-group-text"><i class="fas fa-unlock-alt"></i>
+                     <!-- <svg class="icon">
+                        <use xlink:href="assets/login/node_modules/@coreui/icons/sprites/free.svg#cil-lock-locked"></use>
+                      </svg>
+                    --></span>
+                    
+                    <input class="form-control" formControlName="password" type="password" placeholder="Password"></div>
+                    <div *ngIf="password.touched && password.invalid">
+                      <small *ngIf="password.errors.required" class="text-danger">Password is required<br></small>
+                  </div>
+              
+                  </div>
+                  <div class="row">
+                    <div class="col-6">
+                      <button class="btn btn-primary px-8" type="submit">Login</button>
+                    </div>
+                  </div>       
+                </div>
+          </form>
+            </div>
+          </div>
+</div>
+ </div>
+
+
+
